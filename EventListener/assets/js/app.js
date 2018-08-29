@@ -4,16 +4,25 @@
 //Event listeners
 EventListener();
 function EventListener() {
-    document.getElementById('formulario').addEventListener('submit', agregarTweet)
+    document.getElementById('formulario').addEventListener('submit', AgregarTweet)
 }
 
 
 //funciones
-function agregarTweet(e) {
+function AgregarTweet(e) {
     e.preventDefault();
     const tweet = document.getElementById('tweet').value;
     console.log(tweet);
     const li = document.createElement('li');
     li.innerText = tweet;
     listaTweets.appendChild(li);
+
+    const botonBorrar = document.createElement('a');
+    botonBorrar.classList='borrar-tweet';
+    botonBorrar.innerText='X';
+    li.appendChild(botonBorrar);
+}
+
+function BorrarTweet(){
+
 }
