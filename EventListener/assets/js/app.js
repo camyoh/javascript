@@ -24,6 +24,7 @@ function AgregarTweet(e) {
     botonBorrar.innerText='X';
     li.appendChild(botonBorrar);
     tweet2.value='';
+    agregarTweetLocalStorage(tweet);
 }
 
 function BorrarTweet(e){
@@ -36,4 +37,10 @@ function BorrarTweet(e){
     }else{
         console.log('Aplicó mal el click');
     }
+}
+
+function agregarTweetLocalStorage(tweet) {
+    let tweets;
+    localStorage.setItem('tweets',tweet);
+    
 }
