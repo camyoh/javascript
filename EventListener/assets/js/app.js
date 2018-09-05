@@ -7,6 +7,8 @@ EventListener();
 function EventListener() {
     document.getElementById('formulario').addEventListener('submit', AgregarTweet);
     listaTweets.addEventListener('click', BorrarTweet);
+
+    document.addEventListener('DOMContentLoaded',localStorageListo);
 }
 
 //funciones
@@ -42,21 +44,36 @@ function BorrarTweet(e) {
 
 function agregarTweetLocalStorage(tweet) {
     let tweets;
-    tweets=ObtenerTweetsLocalStorage();
+    tweets = ObtenerTweetsLocalStorage();
     //localStorage.setItem('tweets', tweet);
     tweets.push(tweet);
     //json a string
-    localStorage.setItem('tweets',JSON.stringify(tweets))
+    localStorage.setItem('tweets', JSON.stringify(tweets))
 }
 
-function ObtenerTweetsLocalStorage(){
+function ObtenerTweetsLocalStorage() {
     let tweets;
-    if (localStorage.getItem('tweets')===null){
-        tweets=[];
-    }
-    else{
+    if (localStorage.getItem('tweets') === null) {
+        tweets = [];
+    } else {
         //convertir a json
-        tweets=JSON.parse(localStorage.getItem('tweets'));
+        tweets = JSON.parse(localStorage.getItem('tweets'));
     }
     return tweets;
+}
+
+function localStorageListo() {
+    let tweets;
+    tweets = ObtenerTweetsLocalStorage();
+    tweets.forEach(function (tweet) {
+        
+        const li = document.createElement('li');
+        li.innerText = tweet;
+        listaTweets.appendChild(li);
+
+        const botonBorrar = document.createElement('a');
+        botonBorrar.classList = 'borrar-tweet';
+        botonBorrar.innerText = 'X';
+        li.appendChild(botonBorrar);
+    });
 }
