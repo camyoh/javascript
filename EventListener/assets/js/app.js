@@ -11,7 +11,9 @@ function EventListener() {
 //funciones
 function AgregarTweet(e) {
     e.preventDefault();
-    const tweet = document.getElementById('tweet').value;
+    const tweet2 = document.getElementById('tweet');
+    //const tweet = document.getElementById('tweet').value;
+    const tweet = tweet2.value;
     console.log(tweet);
     const li = document.createElement('li');
     li.innerText = tweet;
@@ -21,6 +23,7 @@ function AgregarTweet(e) {
     botonBorrar.classList='borrar-tweet';
     botonBorrar.innerText='X';
     li.appendChild(botonBorrar);
+    tweet2.value='';
 }
 
 function BorrarTweet(e){
